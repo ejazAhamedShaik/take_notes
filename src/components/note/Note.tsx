@@ -4,12 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { useNote } from "../notesLayout/NotesLayout";
 
 type NoteProps = {
-  onDelete: (id: string) => void
-}
+  onDelete: (id: string) => void;
+};
 
-const Note = ({ onDelete }: NoteProps) => {
+const Notes = ({ onDelete }: NoteProps) => {
   const note = useNote();
-  const navigate = useNavigate()
+  console.log("This is notes" + note.title)
+  const navigate = useNavigate();
   return (
     <>
       <Row className="align-items-center mb-4">
@@ -19,7 +20,7 @@ const Note = ({ onDelete }: NoteProps) => {
             <Stack gap={1} direction="horizontal" className={"flex-wrap"}>
               {note.tags.map((tag) => (
                 <Badge key={tag.id} className="text-truncate">
-                  {tag.label}
+                  {'tag.label'}
                 </Badge>
               ))}
             </Stack>
@@ -30,20 +31,24 @@ const Note = ({ onDelete }: NoteProps) => {
             <Link to={`/${note.id}/edit`}>
               <Button variant="primary">Edit</Button>
             </Link>
-            <Button variant="outline-danger" onClick={()=>{
-              onDelete(note.id)
-              navigate('/')
-            }}>Delete</Button>
-            <Link to={"/"}>
+            <Button
+              variant="outline-danger"
+              onClick={() => {
+                onDelete(note.id);
+                navigate("/");
+              }}
+            >
+              Delete
+            </Button>
+            <Link to={".."}>
               <Button variant="outline-secondary">Back</Button>
             </Link>
           </Stack>
         </Col>
       </Row>
       <ReactMarkdown>{note.markdown}</ReactMarkdown>
-
     </>
   );
 };
 
-export default Note;
+export default Notes;

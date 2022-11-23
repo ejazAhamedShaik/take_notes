@@ -40,7 +40,6 @@ const NoteList = ({
       );
     });
   }, [title, selectedTags, notes]);
-  console.log(filteredNotes);
 
   return (
     <>

@@ -7,7 +7,7 @@ import NewNote from "./components/newNote/NewNote";
 import { v4 as uuidV4 } from "uuid";
 import NoteList from "./components/noteList/NoteList";
 import NotesLayout from "./components/notesLayout/NotesLayout";
-import Note from "./components/note/Note";
+import Notes from "./components/note/Note";
 import EditNote from "./components/editNote/EditNote";
 
 export type Note = {
@@ -131,7 +131,7 @@ function App() {
         />
         <Route path="*" element={<Navigate to={"/"} />} />
         <Route path="/:id" element={<NotesLayout notes={notesWithTags} />}>
-          <Route index element={<Note onDelete={onDeleteNotes} />} />
+          <Route index element={<Notes onDelete={onDeleteNotes} />} />
           <Route
             path="edit"
             element={
