@@ -72,6 +72,7 @@ const NoteList = ({
                 type={"text"}
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
+                placeholder="Search by title"
               />
             </Form.Group>
           </Col>
@@ -92,6 +93,7 @@ const NoteList = ({
                     })
                   );
                 }}
+                placeholder="Search by tag"
                 isMulti
               />
             </Form.Group>
